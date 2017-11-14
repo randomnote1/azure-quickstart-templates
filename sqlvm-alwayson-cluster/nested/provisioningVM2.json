@@ -250,7 +250,7 @@
           "dataDisks": [
             {
               "vhd": {
-                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('dcstorageName')),'2015-06-15').primaryEndpoints.blob,parameters('vmContainerName'),'/',parameters('sqlVMName'),'data-1.vhd')]"
+                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('dcstorageName')),'2015-06-15').primaryEndpoints.blob,parameters('vmContainerName'),'/',parameters('adBDCVMName'),'data-1.vhd')]"
               },
               "name": "[concat(parameters('adBDCVMName'),'-data-disk1')]",
               "createOption": "empty",
