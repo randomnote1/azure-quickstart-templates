@@ -146,7 +146,7 @@
           "osDisk": {
             "name": "osdisk",
             "vhd": {
-              "uri": "[concat('http://',variables('dcstorageName'),'.blob.core.windows.net/',parameters('vmContainerName'),'/',parameters('adPDCVMName'),'-osdisk.vhd')]"
+              "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('dcstorageName')),'2015-06-15').primaryEndpoints.blob,parameters('vmContainerName'),'/',parameters('adPDCVMName'),'-osdisk.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -154,7 +154,7 @@
           "dataDisks": [
             {
               "vhd": {
-                "uri": "[concat('http://',variables('dcstorageName'),'.blob.core.windows.net/',parameters('vmContainerName'),'/', parameters('adPDCVMName'),'data-1.vhd')]"
+                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('dcstorageName')),'2015-06-15').primaryEndpoints.blob,parameters('vmContainerName'),'/',parameters('adPDCVMName'),'data-1.vhd')]"
               },
               "name": "[concat(parameters('adPDCVMName'),'-data-disk1')]",
               "createOption": "empty",
@@ -174,7 +174,7 @@
         "diagnosticsProfile": {
           "bootDiagnostics": {
             "enabled": "true",
-            "storageUri": "[concat('http://',variables('diagstorageName'),'.blob.core.windows.net')]"
+            "storageUri": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('diagstorageName')),'2015-06-15').primaryEndpoints.blob]"
           }
         }
       },
@@ -242,7 +242,7 @@
           "osDisk": {
             "name": "osdisk",
             "vhd": {
-              "uri": "[concat('http://',variables('dcstorageName'),'.blob.core.windows.net/',parameters('vmContainerName'),'/',parameters('adBDCVMName'),'-osdisk.vhd')]"
+              "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('dcstorageName')),'2015-06-15').primaryEndpoints.blob,parameters('vmContainerName'),'/',parameters('adBDCVMName'),'-osdisk.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -250,7 +250,7 @@
           "dataDisks": [
             {
               "vhd": {
-                "uri": "[concat('http://',variables('dcstorageName'),'.blob.core.windows.net/',parameters('vmContainerName'),'/', parameters('adBDCVMName'),'data-1.vhd')]"
+                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('dcstorageName')),'2015-06-15').primaryEndpoints.blob,parameters('vmContainerName'),'/',parameters('adBDCVMName'),'data-1.vhd')]"
               },
               "name": "[concat(parameters('adBDCVMName'),'-data-disk1')]",
               "createOption": "empty",
@@ -270,7 +270,7 @@
         "diagnosticsProfile": {
           "bootDiagnostics": {
             "enabled": "true",
-            "storageUri": "[concat('http://',variables('diagstorageName'),'.blob.core.windows.net')]"
+            "storageUri": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('diagstorageName')),'2015-06-15').primaryEndpoints.blob]"
           }
         }
       }
@@ -305,7 +305,7 @@
           "osDisk": {
             "name": "osdisk",
             "vhd": {
-              "uri": "[concat('http://',variables('fwstorageName'),'.blob.core.windows.net/',parameters('vmContainerName'),'/',parameters('sqlwVMName'),'-osdisk.vhd')]"
+              "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('fwstorageName')),'2015-06-15').primaryEndpoints.blob,parameters('vmContainerName'),'/',parameters('sqlwVMName'),'-osdisk.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -313,7 +313,7 @@
           "dataDisks": [
             {
               "vhd": {
-                "uri": "[concat('http://',variables('fwstorageName'),'.blob.core.windows.net/',parameters('vmContainerName'),'/', parameters('sqlwVMName'),'-data-1.vhd')]"
+                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('fwstorageName')),'2015-06-15').primaryEndpoints.blob,parameters('vmContainerName'),'/',parameters('sqlwVMName'),'-data-1.vhd')]"
               },
               "name": "[concat(parameters('sqlwVMName'),'-data-disk1')]",
               "caching": "None",
@@ -333,7 +333,7 @@
         "diagnosticsProfile": {
           "bootDiagnostics": {
             "enabled": "true",
-            "storageUri": "[concat('http://',variables('diagstorageName'),'.blob.core.windows.net')]"
+            "storageUri": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('diagstorageName')),'2015-06-15').primaryEndpoints.blob]"
           }
         }
       }
@@ -372,7 +372,7 @@
           "osDisk": {
             "name": "osdisk",
             "vhd": {
-              "uri": "[concat('http://',variables('sqlstorageName'),'.blob.core.windows.net/',parameters('vmContainerName'),'/',parameters('sqlVMName'), copyindex(), '-osdisk.vhd')]"
+              "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('sqlstorageName')),'2015-06-15').primaryEndpoints.blob,parameters('vmContainerName'),'/',parameters('sqlVMName'),'-osdisk.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -380,7 +380,7 @@
           "dataDisks": [
             {
               "vhd": {
-                "uri": "[concat('http://',variables('sqlstorageName'),'.blob.core.windows.net/',parameters('vmContainerName'),'/', parameters('sqlVMName'), copyindex(), '-Data-1.vhd')]"
+                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('sqlstorageName')),'2015-06-15').primaryEndpoints.blob,parameters('vmContainerName'),'/',parameters('sqlVMName'),'-Data-1.vhd')]"
               },
               "name": "[concat(parameters('sqlVMName'), copyindex(),'-data-disk1')]",
               "caching": "None",
@@ -390,7 +390,7 @@
             },
             {
               "vhd": {
-                "uri": "[concat('http://',variables('sqlstorageName'),'.blob.core.windows.net/',parameters('vmContainerName'),'/', parameters('sqlVMName'), copyindex(), '-Data-2.vhd')]"
+                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('sqlstorageName')),'2015-06-15').primaryEndpoints.blob,parameters('vmContainerName'),'/',parameters('sqlVMName'),'-Data-2.vhd')]"
               },
               "name": "[concat(parameters('sqlVMName'), copyindex(),'-data-disk2')]",
               "caching": "None",
@@ -400,7 +400,7 @@
             },
             {
               "vhd": {
-                "uri": "[concat('http://',variables('sqlstorageName'),'.blob.core.windows.net/',parameters('vmContainerName'),'/', parameters('sqlVMName'), copyindex(), '-Data-3.vhd')]"
+                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('sqlstorageName')),'2015-06-15').primaryEndpoints.blob,parameters('vmContainerName'),'/',parameters('sqlVMName'),'-Data-3.vhd')]"
               },
               "name": "[concat(parameters('sqlVMName'), copyindex(),'-data-disk3')]",
               "caching": "None",
@@ -410,7 +410,7 @@
             },
             {
               "vhd": {
-                "uri": "[concat('http://',variables('sqlstorageName'),'.blob.core.windows.net/',parameters('vmContainerName'),'/', parameters('sqlVMName'), copyindex(), '-Data-4.vhd')]"
+                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('sqlstorageName')),'2015-06-15').primaryEndpoints.blob,parameters('vmContainerName'),'/',parameters('sqlVMName'),'-Data-4.vhd')]"
               },
               "name": "[concat(parameters('sqlVMName'), copyindex(),'-data-disk4')]",
               "caching": "None",
@@ -430,7 +430,7 @@
         "diagnosticsProfile": {
           "bootDiagnostics": {
             "enabled": "true",
-            "storageUri": "[concat('http://',variables('diagstorageName'),'.blob.core.windows.net')]"
+            "storageUri": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('diagstorageName')),'2015-06-15').primaryEndpoints.blob]"
           }
         }
       }
