@@ -309,7 +309,7 @@
           "osDisk": {
             "name": "osdisk",
             "vhd": {
-              "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('sqlstorageName')),'2015-06-15').primaryEndpoints.blob,parameters('vmContainerName'),'/',parameters('sqlVMName'),'-osdisk.vhd')]"
+              "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('sqlstorageName')),'2015-06-15').primaryEndpoints.blob,parameters('vmContainerName'),'/',parameters('sqlVMName'),copyindex(),'-osdisk.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -317,7 +317,7 @@
           "dataDisks": [
             {
               "vhd": {
-                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('sqlstorageName')),'2015-06-15').primaryEndpoints.blob,parameters('vmContainerName'),'/',parameters('sqlVMName'),'-Data-1.vhd')]"
+                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('sqlstorageName')),'2015-06-15').primaryEndpoints.blob,parameters('vmContainerName'),'/',parameters('sqlVMName'),copyindex(),'-Data-1.vhd')]"
               },
               "name": "[concat(parameters('sqlVMName'), copyindex(),'-data-disk1')]",
               "caching": "None",
@@ -327,7 +327,7 @@
             },
             {
               "vhd": {
-                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('sqlstorageName')),'2015-06-15').primaryEndpoints.blob,parameters('vmContainerName'),'/',parameters('sqlVMName'),'-Data-2.vhd')]"
+                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/',variables('sqlstorageName')),'2015-06-15').primaryEndpoints.blob,parameters('vmContainerName'),'/',parameters('sqlVMName'),copyindex(),'-Data-2.vhd')]"
               },
               "name": "[concat(parameters('sqlVMName'), copyindex(),'-data-disk2')]",
               "caching": "None",
